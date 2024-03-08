@@ -1,6 +1,6 @@
 folderName=$1Subcollect
 
-echo $folderName -n | sudo tee /opt/subcollect/folderNameTransfer.txt
+echo -n $folderName | sudo tee /opt/subcollect/folderNameTransfer.txt
 
 mkdir -p $folderName
 mkdir -p $folderName/outputs
