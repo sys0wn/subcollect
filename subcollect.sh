@@ -1,8 +1,8 @@
 folderName=${1}Subcollect
 
-sudo echo folderName -n > /opt/folderNameTransfer.txt
+sudo echo $folderName -n > /opt/subcollect/folderNameTransfer.txt
 
-mkdir -p folderName
+mkdir -p $folderName
 
 amass enum -d $1 -active -brute recursive -ip -src -o $folderName/outputs/amassOutputTemp.txt -v
 
