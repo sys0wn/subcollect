@@ -3,6 +3,7 @@ folderName=$1Subcollect
 echo $folderName -n | sudo tee /opt/subcollect/folderNameTransfer.txt
 
 mkdir -p $folderName
+mkdir -p $folderName/outputs
 
 amass enum -d $1 -active -brute recursive -ip -src -o $folderName/outputs/amassOutputTemp.txt -v
 
