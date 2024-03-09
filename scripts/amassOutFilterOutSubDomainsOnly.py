@@ -13,7 +13,7 @@ with open(projectFolderPath + "/outputs/amassOutputTemp.txt","r") as file:
     fileContentAmassOutput = file.read()
 
 
-filteredDomains = re.findAll(regex, fileContentAmassOutput)
+filteredDomains = re.findall(regex, fileContentAmassOutput)
 
 
 with open(projectFolderPath + "/outputs/amassOutput.txt", "a") as file:
