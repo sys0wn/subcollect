@@ -1,15 +1,27 @@
 folderName=$1Subcollect
 
+
+echo "\n\n\Creating Project Folder in Current Working Directoryn\n"
+
 echo -n $folderName | sudo tee /opt/subcollect/folderNameTransfer.txt
 
 mkdir -p $folderName
 mkdir -p $folderName/outputs
 
+
+echo "\n\nRunning amass\n\n"
+
 amass enum -d $1 -active -brute recursive -ip -src -o $folderName/outputs/amassOutputTemp.txt -v
+
+echo "\n\nParsing domains out of $folderName/outputs/amassOutputTemp.txt into $folderName/outputs/amassOutput.txt\n\n"
 
 sudo python3 /opt/subcollect/scripts/amassOutFilterOutSubDomainsOnly.py
 
+echo "\n\nRunning puredns\n\n"
+
 puredns bruteforce /usr/share/wordlists/seclists/Discovery/DNS/combined_subdomains.txt $1 -l 500 -w $folderName/outputs/purednsOutput.txt
+
+echo "\n\nMerging tool outputs into combined $folderNamen/outputs/domainList.txt\n\n"
 
 cat $folderName/outputs/amassOutput.txt >> $folderName/outputs/domainList.txt
 cat $folderName/outputs/purednsOutput.txt >> $folderName/outputs/domainList.txt
