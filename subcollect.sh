@@ -1,7 +1,7 @@
 folderName=$1Subcollect
 
 
-echo "\n\nCreating Project Folder in Current Working Directoryn:\n"
+echo "\n\nCreating Project Folder in Current Working Directory:"
 
 echo -n $folderName | sudo tee /opt/subcollect/folderNameTransfer.txt
 
