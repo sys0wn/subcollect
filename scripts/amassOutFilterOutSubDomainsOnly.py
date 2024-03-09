@@ -3,7 +3,7 @@ import os
 
 currentWorkDir = os.getcwd()
 
-with open("/opt/folderNameTransfer.txt", "r") as file:
+with open("/opt/subcollect/folderNameTransfer.txt", "r") as file:
     projectFolderPath = currentWorkDir + "/" + file.read()
 
 
