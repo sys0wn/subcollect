@@ -1,9 +1,17 @@
 sudo mkdir -p /opt/subcollect
 script_dir=$(realpath $(dirname $0))
 
+echo "\n\nCopying scripts to /opt/subcollect\n\n"
+
 sudo cp $script_dir/scripts /opt/subcollect/ -r
+
+echo "\n\nAdding subcollect to PATH\n\n"
+
 sudo cp $script_dir/subcollect.sh /usr/bin/subcollect
 
+
+
+echo "\n\nChecking for dependencies (and installing them)\n\n"
 
 amass_path=$(which amass)
 
