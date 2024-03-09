@@ -5,14 +5,30 @@ sudo cp $script_dir/scripts /opt/subcollect/ -r
 sudo cp $script_dir/subcollect.sh /usr/bin/subcollect
 
 
-if [ "$(which amass)" == "amass not found" ]; then
-    sudo apt install amass
+amass_path=$(which amass)
+
+if [ -n "$amass_path" ]; then
+    echo "amass is already installed at $amass_path."
+else
+    sudo apt-get install amass
 fi
 
-if [ "$(which puredns)" == "puredns not found" ]; then
-    if ["$(which go)" == "go not found"]; then
-       sudo apt install -y golang
+
+
+puredns_path=$(which puredns)
+
+if [ -n "$puredns_path" ]; then
+    echo "puredns is already installed at $puredns_path."
+else
+
+    go_path=$(which go)
+
+    if [ -n "$go_path"]; then
+        echo "go is already installed at $go_path."
+    else
+        sudo apt install -y golang
     fi
+    
     git clone https://github.com/blechschmidt/massdns.git
     cd massdns
     make
@@ -22,10 +38,21 @@ if [ "$(which puredns)" == "puredns not found" ]; then
     curl  https://raw.githubusercontent.com/trickest/resolvers/main/resolvers-trusted.txt > ~/.config/puredns/resolvers.txt
 fi
 
-if [ "$(which gotator)" == "gotator not found" ]; then
-    if ["$(which go)" == "go not found"]; then
-       sudo apt install -y golang
+
+
+gotator_path=$(which gotator)
+
+if [ -n "$gotator_path" ]; then
+    echo "gotator is already installed at $gotator_path."
+else
+    go_path=$(which go)
+
+    if [ -n "$go_path"]; then
+        echo "go is already installed at $go_path."
+    else
+        sudo apt install -y golang
     fi
+    
     go install github.com/Josue87/gotator@latest
     sudo mv ~/go/bin/gotator /usr/bin
 fi
