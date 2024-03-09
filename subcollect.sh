@@ -11,7 +11,9 @@ mkdir -p $folderName/outputs
 
 echo "\n\nRunning amass\n\n"
 
-amass enum -d $1 -active -brute recursive -ip -src -o $folderName/outputs/amassOutputTemp.txt -v
+amass enum -d $1 -active -brute recursive
+
+cp ~/.config/amass/amass.txt $folderName/outputs/amassOutputTemp.txt
 
 echo "\n\nParsing domains out of $folderName/outputs/amassOutputTemp.txt into $folderName/outputs/amassOutput.txt\n\n"
 
