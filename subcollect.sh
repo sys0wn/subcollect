@@ -28,6 +28,6 @@ echo "\n\nMerging tool outputs into combined $folderNamen/outputs/domainList.txt
 cat $folderName/outputs/amassOutput.txt >> $folderName/outputs/domainList.txt
 cat $folderName/outputs/purednsOutput.txt >> $folderName/outputs/domainList.txt
 
-#use dpwg to create wordlist from domainList
+python3 dpwg.py $folderName/outputs/domainList.txt
 
 #gotator -sub subdomains.txt -prefixes -perm customWordlistFromDPWG -md -depth 1 -silent -t 1000 -adv | duplicut -o tempList.txt && puredns resolve tempList.txt -w gotatorOutput.txt
