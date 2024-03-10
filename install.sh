@@ -77,7 +77,7 @@ else
     git clone https://github.com/sys0wn/dpwg
     chmod +x dpwg/dpwg.py 
     sudo cp dpwg/dpwg.py /opt/subcollect/scripts/dpwg.py
-    echo "python3 /opt/subcollect/scripts/dpwg.py" | sudo tee /usr/bin/dpwg
+    echo "python3 /opt/subcollect/scripts/dpwg.py $1 $2" | sudo tee /usr/bin/dpwg
 fi
 
 duplicut_path=$(which duplicut)
