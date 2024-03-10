@@ -16,7 +16,7 @@ with open(inputFile, 'w') as file:
     pass
 
 for filteredSubdomain in filteredSubdomainArray:
-    with open(inputfile, "a") as file:
+    with open(inputFile, "a") as file:
         file.write(filteredSubdomain + "\n")
 
 
