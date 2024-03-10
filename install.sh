@@ -72,5 +72,17 @@ dpwg_path=$(which dpwg)
 if [ -n "$dpwg_path" ]; then
     echo "dpwg is already installed at $dpwg_path."
 else
-    sudo apt-get install amass
+    git clone https://github.com/sys0wn/dpwg
+    sudo cp dpwg/dpwg.py /opt/subcollect/dpwg.py
+    echo "python3 /opt/subcollect/dpwg.py" | sudo tee /usr/bin/dpwg
+fi
+
+duplicut_path=$(which duplicut)
+
+if [ -n "$duplicut_path" ]; then
+    echo "duplicut is already installed at $duplicut_path."
+else
+    git clone https://github.com/nil0x42/duplicut
+    cd duplicut/ && make
+    sudo mv duplicut /usr/bin/duplicut
 fi
