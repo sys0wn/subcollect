@@ -1,17 +1,22 @@
 import sys
 
 inputFile = sys.argv[1]
+targetDomain = sys.argv[2]
 
 filteredSubdomainArray = []
 
 with open(inputFile, "r") as file:
     for line in file:
-        if "minh.monster" in line:
+        if targetDomain in line:
             filteredSubdomainArray.append(line)
 
 
-for filteredSubdomain in filteredSubdomainArray:
-    print(filteredSubdomain)
+#clear file
+with open(inputFile, 'w') as file:
+    pass
 
-#with open(inputfile, "w") as file:
-#    file.write()
+for filteredSubdomain in filteredSubdomainArray:
+    with open(inputfile, "a") as file:
+        file.write(filteredSubdomain + "\n")
+
+
