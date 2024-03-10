@@ -13,9 +13,9 @@ with open(projectFolderPath + "/outputs/amassOutputTemp.txt","r") as file:
     fileContentAmassOutput = file.read()
 
 
-filteredDomains = re.findall(regex, fileContentAmassOutput)
+filteredDomains = re.findall(regex, fileContentAmassOutput, re.MULTILINE)
 
 
 with open(projectFolderPath + "/outputs/amassOutput.txt", "a") as file:
     for filteredDomain in filteredDomains:
-        file.write(filteredDomain)
+        file.write(filteredDomain + "\n")
