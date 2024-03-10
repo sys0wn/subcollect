@@ -64,3 +64,13 @@ else
     go install github.com/Josue87/gotator@latest
     sudo mv ~/go/bin/gotator /usr/bin
 fi
+
+
+
+dpwg_path=$(which dpwg)
+
+if [ -n "$dpwg_path" ]; then
+    echo "dpwg is already installed at $dpwg_path."
+else
+    sudo apt-get install amass
+fi
