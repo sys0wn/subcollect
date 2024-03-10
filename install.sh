@@ -13,7 +13,7 @@ sudo cp $script_dir/subcollect.sh /usr/bin/subcollect
 
 echo "\n\nChecking for dependencies (and installing them)\n\n"
 
-#get wordlist from seclists (combined) into own repo to use with puredsn
+sudo cp allDNSWordlists.txt /opt/subcollect/
 
 amass_path=$(which amass)
 
