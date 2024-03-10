@@ -28,6 +28,6 @@ echo "\n\nMerging tool outputs into combined $folderNamen/outputs/domainList.txt
 cat $folderName/outputs/amassOutput.txt >> $folderName/outputs/domainList.txt
 cat $folderName/outputs/purednsOutput.txt >> $folderName/outputs/domainList.txt
 
-dpwg $folderName/outputs/domainList.txt $folderName/outputs/domainListnoDupes.txt
+dpwg $folderName/outputs/domainList.txt $folderName/outputs/customWordlistDPWG.txt
 
-#gotator -sub subdomains.txt -prefixes -perm customWordlistFromDPWG -md -depth 1 -silent -t 1000 -adv | duplicut -o tempList.txt && puredns resolve tempList.txt -w gotatorOutput.txt
+#gotator -sub $folderName/outputs/domainList.txt -prefixes -perm customWordlistFromDPWG -md -depth 1 -silent -t 1000 -adv | duplicut -o tempList.txt && puredns resolve tempList.txt -w $folderName/outputs/gotatorOutput.txt
