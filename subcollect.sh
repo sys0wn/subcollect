@@ -11,9 +11,9 @@ mkdir -p $folderName/outputs
 
 echo "\n\nRunning amass\n\n"
 
-amass enum -d $1 -active -brute recursive
+amass enum -d $1 -active -brute recursive >> $folderName/outputs/amassOutputTemp.txt
 
-cp ~/.config/amass/amass.txt $folderName/outputs/amassOutputTemp.txt
+cp  $folderName/outputs/amassOutputTemp.txt $folderName/outputs/amassOutputTempPREPYTHON.txt
 
 echo "\n\nParsing domains out of $folderName/outputs/amassOutputTemp.txt into $folderName/outputs/amassOutput.txt\n\n"
 
