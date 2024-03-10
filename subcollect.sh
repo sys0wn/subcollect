@@ -1,5 +1,15 @@
-folderName=$1Subcollect
+#!/bin/bash
 
+
+if ping -c 3 $1 &> /dev/null
+then
+  echo "Starting subcollect against $1 ..."
+else
+  echo "Connection to   $1    cannot be established"   
+  exit 1
+fi
+
+folderName=$1Subcollect
 
 echo "\n\nCreating Project Folder in Current Working Directory:"
 
@@ -18,6 +28,10 @@ cp  $folderName/outputs/amassOutputTemp.txt $folderName/outputs/amassOutputTempP
 echo "\n\nParsing domains out of $folderName/outputs/amassOutputTemp.txt into $folderName/outputs/amassOutput.txt\n\n"
 
 sudo python3 /opt/subcollect/scripts/amassOutFilterOutSubDomainsOnly.py
+
+echo "\n\nRemoving irrelevant domains from $folderName/outputs/amassOutput.txt\n\n"
+
+sudo python3 /opt/subcollect/scripts/amassOutputFilterIrrelevant.py $(pwd)/$folderName/outputs/amassOutput.txt $1
 
 echo "\n\nRunning puredns\n\n"
 
