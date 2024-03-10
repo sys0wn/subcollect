@@ -32,4 +32,4 @@ dpwg $folderName/outputs/domainList.txt $folderName/outputs/customWordlistDPWG.t
 
 gotator -sub $folderName/outputs/domainList.txt -prefixes -perm $folderName/outputs/customWordlistFromDPWG.txt -md -depth 1 -silent -t 1000 -adv | duplicut -o $folderName/outputs/tempList.txt && puredns resolve tempList.txt -w $folderName/outputs/gotatorResolvedPermutions.txt
 
-echo gotatorResolvedPermutions.txt >> $folderName/outputs/domainList.txt
+cat $folderName/outputs/gotatorResolvedPermutions.txt >> $folderName/outputs/domainList.txt
