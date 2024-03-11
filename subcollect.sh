@@ -23,6 +23,13 @@ echo "\n\nRunning amass\n\n"
 
 amass enum -d $1 -active -brute recursive >> $folderName/outputs/amassOutputTemp.txt
 
+amassOutput=$(cat $folderName/outputs/amassOutputTemp.txt)
+
+if [ "$amassOutput" == "No assets were discovered" ];then
+  echo "amass didn't return any subdomanins! Rerunning... 
+  amass enum -d $1 -active -brute recursive >> $folderName/outputs/amassOutputTemp.txt
+fi
+
 cp  $folderName/outputs/amassOutputTemp.txt $folderName/outputs/amassOutputTempPREPYTHON.txt
 
 echo "\n\nParsing domains out of $folderName/outputs/amassOutputTemp.txt into $folderName/outputs/amassOutput.txt\n\n"
