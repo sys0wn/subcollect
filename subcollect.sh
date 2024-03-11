@@ -26,7 +26,7 @@ amass enum -d $1 -active -brute recursive >> $folderName/outputs/amassOutputTemp
 amassOutput=$(cat $folderName/outputs/amassOutputTemp.txt)
 
 if [ "$amassOutput" == "No assets were discovered" ];then
-  printf "amass didn't return any subdomanins! Rerunning... 
+  printf "amass didn't return any subdomanins! Rerunning..."
   amass enum -d $1 -active -brute recursive >> $folderName/outputs/amassOutputTemp.txt
 fi
 
