@@ -46,12 +46,12 @@ echo "\n\nMerging tool outputs into combined $folderNamen/outputs/domainList.txt
 cat $folderName/outputs/amassOutput.txt >> $folderName/outputs/domainList.txt
 cat $folderName/outputs/purednsOutput.txt >> $folderName/outputs/domainList.txt
 
-dpwg $folderName/outputs/domainList.txt $folderName/outputs/customWordlistDPWG.txt
+dpwg $folderName/outputs/domainList.txt $folderName/outputs/customWordlistFromDPWG.txt
 
-gotator -sub $folderName/outputs/domainList.txt -prefixes -perm $folderName/outputs/customWordlistFromDPWG.txt -md -depth 1 -silent -t 1000 -adv | duplicut -o $folderName/outputs/tempList.txt && puredns resolve tempList.txt -w $folderName/outputs/gotatorResolvedPermutions.txt
+gotator -sub $folderName/outputs/domainList.txt -prefixes -perm $folderName/outputs/customWordlistFromDPWG.txt -md -depth 1 -silent -t 1000 -adv | duplicut -o $folderName/outputs/tempList.txt && puredns resolve $folderName/outputs/tempList.txt -w $folderName/outputs/gotatorResolvedPermutions.txt
 
 cat $folderName/outputs/gotatorResolvedPermutions.txt >> $folderName/outputs/domainList.txt
 
 mkdir $folderName/outputs/finalOutput
 
-duplicut $folderName/outputs/domainList.txt -o $folderName/output/finalOutput/domainList.txt
+duplicut $folderName/outputs/domainList.txt -o $folderName/outputs/finalOutput/domainList.txt
