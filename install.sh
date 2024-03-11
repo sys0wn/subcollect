@@ -15,7 +15,7 @@ sudo cp $script_dir/subcollect.sh /usr/bin/subcollect
 
 printf "\n\nChecking for dependencies (and installing them)\n\n"
 
-cat $script_dir/wordlists/* | sudo tee /opt/subcollect/allDNSWordlists.txt
+cat $script_dir/wordlists/* | sudo tee /opt/subcollect/allDNSWordlists.txt  > /dev/null
 
 amass_path=$(which amass)
 
