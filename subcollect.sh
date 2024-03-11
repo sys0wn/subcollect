@@ -52,6 +52,6 @@ gotator -sub $folderName/outputs/domainList.txt -prefixes -perm $folderName/outp
 
 cat $folderName/outputs/gotatorResolvedPermutions.txt >> $folderName/outputs/domainList.txt
 
-mkdir $folderName/outpus/finalOutput
+mkdir $folderName/outputs/finalOutput
 
 duplicut $folderName/outputs/domainList.txt -o $folderName/output/finalOutput/domainList.txt
