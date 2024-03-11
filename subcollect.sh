@@ -13,7 +13,7 @@ folderName=$1Subcollect
 
 echo "\n\nCreating Project Folder in Current Working Directory:"
 
-echo -n $folderName | sudo tee /opt/subcollect/folderNameTransfer.txt
+echo -n $folderName | sudo tee /opt/subcollect/folderNameTransfer.txt > /dev/null
 
 mkdir -p $folderName
 mkdir -p $folderName/outputs
