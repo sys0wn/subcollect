@@ -43,10 +43,7 @@ sudo python3 /opt/subcollect/scripts/amassOutputFilterIrrelevant.py $(pwd)/$fold
 printf "\n\nRunning puredns\n\n"
 
 
-#LATER CHANGE TO WORDLIST: /opt/subcollect/allDNSWordlists.txt
-
-
-puredns bruteforce /usr/share/wordlists/seclists/Discovery/DNS/combined_subdomains.txt $1 -l 500 -w $folderName/outputs/purednsOutput.txt
+puredns bruteforce /opt/subcollect/allDNSWordlists.txt $1 -l 500 -w $folderName/outputs/purednsOutput.txt
 
 printf "\n\nMerging tool outputs into combined $folderName/outputs/domainList.txt\n\n"
 
