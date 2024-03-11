@@ -48,7 +48,7 @@ printf "\n\nRunning puredns\n\n"
 
 puredns bruteforce /usr/share/wordlists/seclists/Discovery/DNS/combined_subdomains.txt $1 -l 500 -w $folderName/outputs/purednsOutput.txt
 
-printf "\n\nMerging tool outputs into combined $folderNamen/outputs/domainList.txt\n\n"
+printf "\n\nMerging tool outputs into combined $folderName/outputs/domainList.txt\n\n"
 
 cat $folderName/outputs/amassOutput.txt >> $folderName/outputs/domainList.txt
 cat $folderName/outputs/purednsOutput.txt >> $folderName/outputs/domainList.txt
