@@ -73,6 +73,9 @@ dpwg_path=$(which dpwg)
 
 if [ -n "$dpwg_path" ]; then
     echo "dpwg is already installed at $dpwg_path."
+    git clone https://github.com/sys0wn/dpwg
+    chmod +x dpwg/dpwg.py 
+    sudo cp dpwg/dpwg.py /opt/subcollect/scripts/dpwg.py
 else
     git clone https://github.com/sys0wn/dpwg
     chmod +x dpwg/dpwg.py 
