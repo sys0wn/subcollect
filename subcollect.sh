@@ -3,15 +3,15 @@
 
 if ping -c 3 $1 &> /dev/null
 then
-  echo "Starting subcollect against $1 ..."
+  printf "Starting subcollect against $1 ..."
 else
-  echo "Connection to   $1    cannot be established"   
+  printf "Connection to   $1    cannot be established"   
   exit 1
 fi
 
 folderName=$1Subcollect
 
-echo "\n\nCreating Project Folder in Current Working Directory:"
+printf "\n\nCreating Project Folder in Current Working Directory:"
 
 echo -n $folderName | sudo tee /opt/subcollect/folderNameTransfer.txt > /dev/null
 
@@ -19,28 +19,28 @@ mkdir -p $folderName
 mkdir -p $folderName/outputs
 
 
-echo "\n\nRunning amass\n\n"
+printf "\n\nRunning amass\n\n"
 
 amass enum -d $1 -active -brute recursive >> $folderName/outputs/amassOutputTemp.txt
 
 amassOutput=$(cat $folderName/outputs/amassOutputTemp.txt)
 
 if [ "$amassOutput" == "No assets were discovered" ];then
-  echo "amass didn't return any subdomanins! Rerunning... 
+  printf "amass didn't return any subdomanins! Rerunning... 
   amass enum -d $1 -active -brute recursive >> $folderName/outputs/amassOutputTemp.txt
 fi
 
 cp  $folderName/outputs/amassOutputTemp.txt $folderName/outputs/amassOutputTempPREPYTHON.txt
 
-echo "\n\nParsing domains out of $folderName/outputs/amassOutputTemp.txt into $folderName/outputs/amassOutput.txt\n\n"
+printf "\n\nParsing domains out of $folderName/outputs/amassOutputTemp.txt into $folderName/outputs/amassOutput.txt\n\n"
 
 sudo python3 /opt/subcollect/scripts/amassOutFilterOutSubDomainsOnly.py
 
-echo "\n\nRemoving irrelevant domains from $folderName/outputs/amassOutput.txt\n\n"
+printf "\n\nRemoving irrelevant domains from $folderName/outputs/amassOutput.txt\n\n"
 
 sudo python3 /opt/subcollect/scripts/amassOutputFilterIrrelevant.py $(pwd)/$folderName/outputs/amassOutput.txt $1
 
-echo "\n\nRunning puredns\n\n"
+printf "\n\nRunning puredns\n\n"
 
 
 #LATER CHANGE TO WORDLIST: /opt/subcollect/allDNSWordlists.txt
@@ -48,7 +48,7 @@ echo "\n\nRunning puredns\n\n"
 
 puredns bruteforce /usr/share/wordlists/seclists/Discovery/DNS/combined_subdomains.txt $1 -l 500 -w $folderName/outputs/purednsOutput.txt
 
-echo "\n\nMerging tool outputs into combined $folderNamen/outputs/domainList.txt\n\n"
+printf "\n\nMerging tool outputs into combined $folderNamen/outputs/domainList.txt\n\n"
 
 cat $folderName/outputs/amassOutput.txt >> $folderName/outputs/domainList.txt
 cat $folderName/outputs/purednsOutput.txt >> $folderName/outputs/domainList.txt
