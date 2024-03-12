@@ -17,6 +17,15 @@ printf "\n\nChecking for dependencies (and installing them)\n\n"
 
 cat $script_dir/wordlists/* | sudo tee /opt/subcollect/allDNSWordlists.txt  > /dev/null
 
+
+gcc_path=$(which gcc)
+
+if [ -n "$gcc_path" ]; then
+    printf "gcc is already installed at $gcc_path."
+else
+    sudo apt-get install -y gcc
+fi
+
 unzip_path=$(which unzip)
 
 if [ -n "$unzip_path" ]; then
@@ -52,14 +61,8 @@ else
     sudo cp amass_Linux_amd64/amass /usr/bin
 fi
 
-go_path=$(which go)
+sudo apt install -y golang
 
-if [ -n "$go_path"]; then
-    printf "go is already installed at $go_path."
-else
-    sudo apt install -y golang
-fi
-        
 puredns_path=$(which puredns)
 
 if [ -n "$puredns_path" ]; then
@@ -98,8 +101,8 @@ else
     git clone https://github.com/sys0wn/dpwg
     chmod +x dpwg/dpwg.py 
     sudo cp dpwg/dpwg.py /opt/subcollect/scripts/dpwg.py
-    sudo chmod +x /usr/bin/dpwg
     echo "python3 /opt/subcollect/scripts/dpwg.py $1 $2" | sudo tee /usr/bin/dpwg
+    sudo chmod +x /usr/bin/dpwg
 fi
 
 duplicut_path=$(which duplicut)
