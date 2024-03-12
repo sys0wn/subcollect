@@ -17,6 +17,14 @@ printf "\n\nChecking for dependencies (and installing them)\n\n"
 
 cat $script_dir/wordlists/* | sudo tee /opt/subcollect/allDNSWordlists.txt  > /dev/null
 
+unzip_path=$(which unzip)
+
+if [ -n "$unzip_path" ]; then
+    printf "unzip is already installed at $unzip_path."
+else
+    sudo apt-get install -y unzip
+fi
+
 wget_path=$(which wget)
 
 if [ -n "$wget_path" ]; then
