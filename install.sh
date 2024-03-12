@@ -17,30 +17,46 @@ printf "\n\nChecking for dependencies (and installing them)\n\n"
 
 cat $script_dir/wordlists/* | sudo tee /opt/subcollect/allDNSWordlists.txt  > /dev/null
 
+wget_path=$(which wget)
+
+if [ -n "$wget_path" ]; then
+    printf "wget is already installed at $wget_path."
+else
+    sudo apt-get install -y wget
+fi
+
+make_path=$(which make)
+
+if [ -n "$make_path" ]; then
+    printf "make is already installed at $make_path."
+else
+    sudo apt-get install -y make
+fi
+
+
 amass_path=$(which amass)
 
 if [ -n "$amass_path" ]; then
     printf "amass is already installed at $amass_path."
 else
-    sudo apt-get install amass
+    wget https://github.com/owasp-amass/amass/releases/download/v4.2.0/amass_Linux_amd64.zip
+    unzip amass_Linux_amd64.zip
+    sudo cp amass_Linux_amd64/amass /usr/bin
 fi
 
+go_path=$(which go)
 
-
+if [ -n "$go_path"]; then
+    printf "go is already installed at $go_path."
+else
+    sudo apt install -y golang
+fi
+        
 puredns_path=$(which puredns)
 
 if [ -n "$puredns_path" ]; then
     printf "puredns is already installed at $puredns_path."
-else
-
-    go_path=$(which go)
-
-    if [ -n "$go_path"]; then
-        printf "go is already installed at $go_path."
-    else
-        sudo apt install -y golang
-    fi
-    
+else  
     git clone https://github.com/blechschmidt/massdns.git
     cd massdns
     make
@@ -57,14 +73,6 @@ gotator_path=$(which gotator)
 if [ -n "$gotator_path" ]; then
     printf "gotator is already installed at $gotator_path."
 else
-    go_path=$(which go)
-
-    if [ -n "$go_path"]; then
-        printf "go is already installed at $go_path."
-    else
-        sudo apt install -y golang
-    fi
-    
     go install github.com/Josue87/gotator@latest
     sudo mv ~/go/bin/gotator /usr/bin
 fi
