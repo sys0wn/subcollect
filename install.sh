@@ -74,6 +74,8 @@ else
     sudo make install
     go install github.com/d3mondev/puredns/v2@latest
     sudo mv ~/go/bin/puredns /usr/bin
+    mkdir -p ~/.config/
+    mkdir -p ~/.config/puredns/
     curl  https://raw.githubusercontent.com/trickest/resolvers/main/resolvers-trusted.txt > ~/.config/puredns/resolvers.txt
 fi
 
