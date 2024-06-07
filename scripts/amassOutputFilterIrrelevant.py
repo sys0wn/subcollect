@@ -1,4 +1,5 @@
 import sys
+import re
 
 inputFile = sys.argv[1]
 targetDomain = sys.argv[2]
