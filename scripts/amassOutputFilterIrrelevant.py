@@ -15,7 +15,7 @@ OnlyReleventDomainsRegex = ""
 for i in range(len(targetDomainArray)):
     OnlyReleventDomainsRegex += targetDomainArray[i] + "\."
 
-    if( i == len(targetDomainArray)):
+    if( i == len(targetDomainArray) - 1):
         OnlyReleventDomainsRegex = OnlyReleventDomainsRegex[:-2]
         OnlyReleventDomainsRegex += "$"
 
