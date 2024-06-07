@@ -12,10 +12,10 @@ OnlyReleventDomainsRegex = ""
 
 #Dynamic regex builder
 
-for i in range(len(targetDomainArray) - 1):
+for i in range(len(targetDomainArray)):
     OnlyReleventDomainsRegex += targetDomainArray[i] + "\."
 
-    if( i == len(targetDomainArray) - 1):
+    if( i == len(targetDomainArray)):
         OnlyReleventDomainsRegex = OnlyReleventDomainsRegex[:-2]
         OnlyReleventDomainsRegex += "$"
 
