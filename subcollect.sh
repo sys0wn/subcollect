@@ -58,4 +58,4 @@ cat $folderName/outputs/gotatorResolvedPermutions.txt >> $folderName/outputs/dom
 
 mkdir $folderName/outputs/finalOutput
 
-duplicut $folderName/outputs/domainList.txt -o $folderName/outputs/finalOutput/domainList.txt
+duplicut $folderName/outputs/domainList.txt -o $folderName/outputs/finalOutput/domainList.txt -l 1000
