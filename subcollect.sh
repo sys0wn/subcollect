@@ -52,7 +52,7 @@ cat $folderName/outputs/purednsOutput.txt >> $folderName/outputs/domainList.txt
 
 dpwg $folderName/outputs/domainList.txt $folderName/outputs/customWordlistFromDPWG.txt
 
-gotator -sub $folderName/outputs/domainList.txt -prefixes -perm $folderName/outputs/customWordlistFromDPWG.txt -md -depth 1 -silent -t 1000 -adv | duplicut -o $folderName/outputs/tempList.txt && puredns resolve $folderName/outputs/tempList.txt -w $folderName/outputs/gotatorResolvedPermutions.txt
+gotator -sub $folderName/outputs/domainList.txt -prefixes -perm $folderName/outputs/customWordlistFromDPWG.txt -md -depth 1 -silent -t 1000 -adv | duplicut -o $folderName/outputs/tempList.txt -l 1000 && puredns resolve $folderName/outputs/tempList.txt -w $folderName/outputs/gotatorResolvedPermutions.txt
 
 cat $folderName/outputs/gotatorResolvedPermutions.txt >> $folderName/outputs/domainList.txt
 
